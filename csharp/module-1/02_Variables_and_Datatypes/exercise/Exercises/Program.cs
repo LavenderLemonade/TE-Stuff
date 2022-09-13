@@ -396,7 +396,8 @@ namespace VariableNaming
             double billRate = billSpeed * totalRooms;
             double jillRate = jillSpeed * totalRooms;
             double totalRates = billRate + jillRate;
-            double finishedRooms = totalRooms * totalRates;
+            double finishedRooms = totalRooms / totalRates;
+            Console.WriteLine(totalRates);
             /*
             52. Create and assign variables to hold a first name, last name, and middle initial. Using concatenation,
             build an additional variable to hold the full name in the order of last name, first name, middle initial. The
