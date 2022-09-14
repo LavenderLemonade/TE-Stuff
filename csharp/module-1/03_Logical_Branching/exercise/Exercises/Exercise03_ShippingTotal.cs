@@ -24,7 +24,15 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateShippingTotal(int weightInPounds)
         {
-            return 0;
+            if (weightInPounds <= MaxWeightPounds)
+            {
+                return weightInPounds * UpTo40PoundRate;
+            }
+            else
+            {
+                return (40 * UpTo40PoundRate) + (weightInPounds - 40)*Over40PoundRate;
+            }
+            
         }
 
         /*
@@ -41,7 +49,24 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateShippingTotal(int weightInPounds, bool hasDiscount)
         {
-            return 0;
+           if (weightInPounds <= 40 && hasDiscount == true)
+            {
+                return ((weightInPounds * UpTo40PoundRate) - ((weightInPounds * UpTo40PoundRate) * 0.10));
+            }
+           if (weightInPounds <= 40 && hasDiscount == false)
+            {
+                return (weightInPounds * UpTo40PoundRate);
+            }
+           if (weightInPounds > 40 && hasDiscount == true)
+            {
+                return ((40 * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) - (((40 * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) * 0.10);
+            }
+           else
+            {
+                return ((40 * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate);
+            }
+            
+            
         }
 
         /*
@@ -56,6 +81,15 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateShippingTotal(int weightInPounds, double discountPercentage)
         {
+            if (weightInPounds <= 40)
+            {
+                return ((weightInPounds * UpTo40PoundRate) - ((weightInPounds * UpTo40PoundRate) * discountPercentage));
+            }
+
+            if (weightInPounds > 40)
+            {
+                return ((40 * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) - (((40 * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) * discountPercentage);
+            }
             return 0;
         }
     }

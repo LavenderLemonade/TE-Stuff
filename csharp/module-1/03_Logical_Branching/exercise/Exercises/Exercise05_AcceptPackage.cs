@@ -27,6 +27,10 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool AcceptPackage(int weightInPounds)
         {
+            if (weightInPounds <= MaxWeightPounds)
+            {
+                return true;
+            }
             return false;
         }
         
@@ -40,6 +44,10 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool AcceptPackage(int weightInPounds, int lengthInInches, int widthInInches, int heightInInches)
         {
+            if (weightInPounds <= MaxWeightPounds && (lengthInInches * widthInInches * heightInInches) <= 6912)
+            {
+                return true;
+            }
             return false;
         }
 
@@ -63,7 +71,20 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool AcceptPackage(int weightInPounds, int lengthInInches, int widthInInches, int heightInInches, bool isSurchargePaid)
         {
-            return false;
+            if (weightInPounds <= MaxWeightPounds && (lengthInInches * widthInInches * heightInInches) <= 6912)
+            {
+                if (lengthInInches <= 66 && widthInInches <= 66 && heightInInches <= 66)
+                {
+                    return true;
+                }
+                if (lengthInInches > 66 || widthInInches > 66 || heightInInches > 66 && isSurchargePaid == true)
+                {
+                    return true;
+                }
+               
+            }
+
+                return false;
         }
     }
 }

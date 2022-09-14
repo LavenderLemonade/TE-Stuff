@@ -8,13 +8,13 @@
         */
         public string ReturnAdultOrMinorAgain(int number)
         {
-            if (true)
+            if (!(number >= 18))
             {
-                return "Adult";
+                return "Minor";
             }
             else
             {
-                return "Minor";
+                return "Adult";
             }
         }
     }

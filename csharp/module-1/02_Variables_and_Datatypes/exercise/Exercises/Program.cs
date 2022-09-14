@@ -416,6 +416,10 @@ namespace VariableNaming
             decimal tripDistance = 800.0M;
             decimal completedDistance = 537.0M;
             int tripPercentage = (int)((completedDistance / tripDistance) * 100);
+
+            bool a = false;
+            bool b = false;
+            Console.WriteLine(a && b);
             
         }
     }
