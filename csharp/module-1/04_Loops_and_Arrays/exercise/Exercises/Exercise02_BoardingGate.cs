@@ -30,7 +30,12 @@ namespace Exercises
         */
         public bool[] GenerateSeatingChart(int numberOfSeats)
         {
-            return new bool[] { };
+            bool[] seatingPeeps = new bool[numberOfSeats];
+            for (int i = 0; i < numberOfSeats; i++)
+            {
+                seatingPeeps[i] = true;
+            }
+            return seatingPeeps;
         }
 
         /*
@@ -48,7 +53,15 @@ namespace Exercises
         */
         public int GetAvailableSeatCount(bool[] seatingChart)
         {
-            return 0;
+            int countingSeats = 0;
+            for (int i =0; i < seatingChart.Length; i++)
+            {
+                if (seatingChart[i] == true)
+                {
+                    countingSeats++;
+                }
+            }
+            return countingSeats;
         }
 
         /*
@@ -66,7 +79,37 @@ namespace Exercises
 
         public int GetNumberOfFullRows(bool[] seatingChart)
         {
-            return 0;
+            int checkCounter = 0;
+            int emptyChecker = 0;
+            int rowChecker = 0;
+
+            for (int i = 0;  i < seatingChart.Length; i++)
+            {
+                if (seatingChart[i] == false)
+                {
+                    checkCounter++;
+                    emptyChecker++;
+                }
+
+                if (seatingChart[i] == true)
+                {
+                    checkCounter++;
+                }
+
+                if (checkCounter == 3)
+                {
+                    if (emptyChecker == 3)
+                    {
+                        rowChecker++;
+                    }
+
+                    checkCounter = 0;
+                    emptyChecker = 0;
+                }
+            }
+            return rowChecker;
+
+
         }
     }
 }
