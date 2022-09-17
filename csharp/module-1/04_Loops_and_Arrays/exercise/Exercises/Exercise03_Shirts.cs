@@ -22,7 +22,14 @@ namespace Exercises
         */
         public char[] BuildOrder()
         {
-            return new char[] { };
+            char[] custOrder = new char[6];
+            custOrder[0] = 'S';
+            custOrder[1] = 'S';
+            custOrder[2] = 'S';
+            custOrder[3] = 'M';
+            custOrder[4] = 'M';
+            custOrder[5] = 'L';
+            return custOrder;
         }
 
         /*
@@ -43,7 +50,28 @@ namespace Exercises
         */
         public char[] BuildBulkOrder(int numberOfShirts)
         {
-            return new char[] { };
+            int placeCounter = 0;
+            char[] bulkOrder = new char[numberOfShirts];
+
+            for (int i = 0; i < numberOfShirts; i++)
+            {
+                if (placeCounter == 0)
+                {
+                    bulkOrder[i] = 'S';
+                }
+                if (placeCounter == 1)
+                {
+                    bulkOrder[i] = 'M';
+                }
+                if (placeCounter == 2)
+                {
+                    bulkOrder[i] = 'L';
+                    placeCounter = -1;
+                }
+                placeCounter++;
+            }
+
+            return bulkOrder;
         }
 
         /*
@@ -61,6 +89,18 @@ namespace Exercises
         */
         public bool PlaceRequest(char[] order)
         {
+            int smallCounter = 0;
+            for (int i = 0; i < order.Length; i++)
+            {
+                if (order[i] == 'S')
+                {
+                    smallCounter++;
+                }
+            }
+            if (smallCounter > 0)
+            {
+                return true;
+            }
             return false;
         }
     }

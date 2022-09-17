@@ -30,7 +30,15 @@ namespace Exercises
         */
         public int BelowFreezing(int[] dailyHighs)
         {
-            return 0;
+            int frozeCounter = 0;
+            for (int i =0; i < dailyHighs.Length; i++)
+            {
+                if (dailyHighs[i] <= 32)
+                {
+                    frozeCounter++;
+                }
+            }
+            return frozeCounter;
         }
 
         /*
@@ -49,7 +57,15 @@ namespace Exercises
         */
         public int HottestDay(int[] dailyHighs)
         {
-            return 0;
+            int checkHot = dailyHighs[0];
+            for (int i = 0; i < dailyHighs.Length; i++)
+            {
+                if (dailyHighs[i] > checkHot)
+                {
+                    checkHot = dailyHighs[i];
+                }
+            }
+            return checkHot;
         }
 
         /*
@@ -68,7 +84,21 @@ namespace Exercises
         */
         public int[] FixTemperatures(int[] temperatures)
         {
-            return new int[] { };
+
+            if (temperatures.Length == 0)
+            {
+                return new int[0];
+            }
+            for (int i = 0; i < temperatures.Length; i = i+2)
+            {
+               temperatures[i] = temperatures[i] + 2;
+
+                
+            }
+
+
+            
+            return temperatures;
         }
     }
 }

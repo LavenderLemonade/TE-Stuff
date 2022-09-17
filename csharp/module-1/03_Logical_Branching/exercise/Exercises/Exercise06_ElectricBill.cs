@@ -30,6 +30,14 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateElectricBill(double unitsUsed)
         {
+            if (unitsUsed <= 100)
+            {
+                return (unitsUsed * BaseServiceRate);
+            }
+            if (unitsUsed > 100)
+            {
+                return ((100 * BaseServiceRate) + ((unitsUsed - 100)*ExcessServiceRate));
+            }
             return 0;
         }
 
@@ -46,6 +54,29 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateElectricBill(double unitsUsed, bool hasRenewableEnergy)
         {
+            if (hasRenewableEnergy == true)
+            {
+                if (unitsUsed <= 100)
+                {
+                    return (unitsUsed * BaseServiceRate) - ((unitsUsed * BaseServiceRate)*0.05);
+                }
+                if (unitsUsed > 100)
+                {
+                    return (((100 * BaseServiceRate) + ((unitsUsed - 100) * ExcessServiceRate)) - (((100 * BaseServiceRate) + ((unitsUsed - 100) * ExcessServiceRate))*0.05));
+                }
+            }
+
+            if (hasRenewableEnergy == false)
+            {
+                if (unitsUsed <= 100)
+                {
+                    return (unitsUsed * BaseServiceRate);
+                }
+                if (unitsUsed > 100)
+                {
+                    return ((100 * BaseServiceRate) + ((unitsUsed - 100) * ExcessServiceRate));
+                }
+            }
             return 0;
         }
 
@@ -72,6 +103,25 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateElectricBill(double unitsUsed, double unitsReturned)
         {
+            if (unitsReturned > 0 && (unitsUsed - unitsReturned) > 0)
+            {
+                if (unitsUsed - unitsReturned <= 100)
+                {
+                    return ((unitsUsed - unitsReturned) * BaseServiceRate) - (((unitsUsed - unitsReturned) * BaseServiceRate) * 0.05);
+                }
+                if ((unitsUsed - unitsReturned) > 100)
+                {
+                    return (((100 * BaseServiceRate) + (((unitsUsed - unitsReturned) - 100) * ExcessServiceRate)) - (((100 * BaseServiceRate) + (((unitsUsed - unitsReturned) - 100) * ExcessServiceRate)) * 0.05));
+                }
+            }
+            if ((unitsUsed - unitsReturned) <= 100)
+            {
+                return ((unitsUsed - unitsReturned) * BaseServiceRate);
+            }
+            if ((unitsUsed - unitsReturned) > 100)
+            {
+                return ((100 * BaseServiceRate) + (((unitsUsed - unitsReturned) - 100) * ExcessServiceRate));
+            }
             return 0;
         }
     }

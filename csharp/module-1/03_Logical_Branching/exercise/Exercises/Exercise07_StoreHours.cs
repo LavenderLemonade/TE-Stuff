@@ -34,6 +34,10 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool IsStoreOpen(int currentHour)
         {
+            if (currentHour < 17 && currentHour >= 8)
+            {
+                return true;
+            }
             return false;
         }
 
@@ -56,6 +60,14 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool IsStoreOpen(int currentHour, char currentDay)
         {
+            if (currentHour < 17 && currentHour >= 8)
+            {
+                if (currentDay == 'M' || currentDay == 'W' || currentDay == 'F')
+                {
+                    return true;
+                }
+                
+            }
             return false;
         }
 
@@ -75,6 +87,41 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool IsStoreOpen(int currentHour, char currentDay, bool isSummer)
         {
+            if (isSummer == true)
+            {
+                if (currentDay == 'M' || currentDay == 'F')
+                {
+                    if (currentHour < 17 && currentHour >= 8)
+                    {
+                        return true;
+                    }
+                }
+                if (currentDay == 'W')
+                {
+                    if (currentHour < 20 && currentHour >= 8)
+                    {
+                        return true;
+                    }
+                }
+                if (currentDay == 'S')
+                {
+                    if (currentHour >= 9 && currentHour < 15)
+                    {
+                        return true;
+                    }
+                }
+            }
+            if (isSummer == false)
+            {
+                if (currentHour < 17 && currentHour >= 8)
+                {
+                    if (currentDay == 'M' || currentDay == 'W' || currentDay == 'F')
+                    {
+                        return true;
+                    }
+
+                }
+            }
             return false;
         }
     }
