@@ -11,7 +11,14 @@
         */
         public string TheEnd(string str, bool front)
         {
-            return null;
+            if (front == false)
+            {
+                string blue = str.Substring((str.Length-1),1);
+                return blue;
+            }
+            string green = str.Substring(0, 1);
+
+            return green;
         }
     }
 }

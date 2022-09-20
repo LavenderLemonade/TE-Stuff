@@ -10,7 +10,16 @@
         */
         public string StringBits(string str)
         {
-            return null;
+            string blueMoon = "";
+
+            for (int i =0; i < str.Length; i=i+2)
+            {
+                blueMoon += str[i];
+
+            }
+
+
+            return blueMoon;
         }
     }
 }

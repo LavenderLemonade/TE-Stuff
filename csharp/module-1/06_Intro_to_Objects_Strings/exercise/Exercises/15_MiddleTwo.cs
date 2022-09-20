@@ -11,6 +11,13 @@
         */
         public string MiddleTwo(string str)
         {
+            if (str.Length % 2 == 0)
+            {
+                string blue = str.Substring((((str.Length) / 2) - 1), 1);
+                string yellow = str.Substring((((str.Length) / 2)), 1);
+                string green = blue + yellow;
+                return green;
+            }
             return null;
         }
     }

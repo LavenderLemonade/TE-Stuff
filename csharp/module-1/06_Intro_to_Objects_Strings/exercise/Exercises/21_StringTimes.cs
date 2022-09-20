@@ -10,7 +10,13 @@
         */
         public string StringTimes(string str, int n)
         {
-            return null;
+            string stringBruh = "";
+            for (int i = 0; i < n; i++)
+            {
+                
+                stringBruh = stringBruh + str;
+            }
+            return stringBruh;
         }
     }
 }

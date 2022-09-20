@@ -11,7 +11,10 @@
         */
         public string NonStart(string a, string b)
         {
-            return null;
+            string blue = a.Substring(1, (a.Length - 1));
+            string yellow = b.Substring(1, (b.Length - 1));
+            string green = blue + yellow;
+            return green;
         }
     }
 }

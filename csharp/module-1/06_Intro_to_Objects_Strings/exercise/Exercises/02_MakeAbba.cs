@@ -11,7 +11,8 @@
         */
         public string MakeAbba(string a, string b)
         {
-            return null;
+            string green = a + b + b + a;
+            return green;
         }
     }
 }

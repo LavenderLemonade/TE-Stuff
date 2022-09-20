@@ -12,7 +12,19 @@
         */
         public string TwoChar(string str, int index)
         {
-            return null;
+            if (index < 0)
+            {
+                string blue = str.Substring(0, 2);
+                return blue;
+            }
+            if (str.Length - index <= 1)
+            {
+                string blue = str.Substring(0, 2);
+                return blue;
+            }
+
+            string green = str.Substring(index, 2);
+            return green;
         }
     }
 }

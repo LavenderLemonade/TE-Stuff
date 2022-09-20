@@ -10,7 +10,8 @@
         */
         public string HelloName(string name)
         {
-            return null;
+            string green = "Hello " + name + "!";
+            return green;
         }
     }
 }

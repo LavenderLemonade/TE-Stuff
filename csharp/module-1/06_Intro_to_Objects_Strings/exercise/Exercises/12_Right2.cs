@@ -11,7 +11,10 @@
         */
         public string Right2(string str)
         {
-            return null;
+            string pink = str.Substring((str.Length - 2), 2);
+            string purple = str.Substring(0, (str.Length-2));
+            string magenta = pink + purple;
+            return magenta;
         }
     }
 }

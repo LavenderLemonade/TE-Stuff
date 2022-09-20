@@ -11,7 +11,10 @@
         */
         public string NTwice(string str, int n)
         {
-            return null;
+            string blue = str.Substring(0, n);
+            string yellow = str.Substring(((str.Length) - (n)), n);
+            string green = blue + yellow;
+            return green;
         }
     }
 }

@@ -12,6 +12,17 @@
         */
         public string ComboString(string a, string b)
         {
+            if ( a.Length > b.Length)
+            {
+                string green = b + a + b;
+                return green;
+            }
+
+            if (b.Length > a.Length)
+            {
+                string green = a + b + a;
+                return green;
+            }
             return null;
         }
     }
