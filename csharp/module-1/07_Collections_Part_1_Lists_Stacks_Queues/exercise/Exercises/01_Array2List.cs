@@ -12,7 +12,22 @@ namespace Exercises
         */
         public List<string> Array2List(string[] stringArray)
         {
-            return null;
+            List<string> items = new List<string>();
+
+            for (int i =0; i < stringArray.Length; i++)
+            {
+                items.Add(stringArray[i]);
+            }
+
+            return items;
+
+
+
         }
     }
+
+
+  
+
+   
 }

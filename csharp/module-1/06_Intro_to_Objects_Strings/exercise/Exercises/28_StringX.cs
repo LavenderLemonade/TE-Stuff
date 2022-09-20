@@ -11,7 +11,30 @@
         */
         public string StringX(string str)
         {
-            return str;
+            char splitter = '0';
+            
+
+            char[] strArray = new char[str.Length];
+
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                strArray[i] = str[i];
+            }
+
+            for (int i = 1; i < str.Length - 1; i++)
+            {
+                if (strArray[i] == 'x')
+                {
+                    strArray[i] = splitter;
+                }
+            }
+            string midArray = string.Join("", strArray);
+
+            string[] finArray = midArray.Split('0');
+            string finalAnswer = string.Join("", finArray);
+
+            return finalAnswer;
         }
     }
 }
