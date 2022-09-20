@@ -6,47 +6,43 @@ namespace DecimalToBinary
     {
         static void Main(string[] args)
         {
-            // Tossing my counter(s) here
-            int runningMod = 0;
-            int counter = 0;
+            Console.WriteLine("He there, gimme a number.");
+            string thisNum = Console.ReadLine();
+            string[] theseNums = thisNum.Split(' ');
+            
 
-            //let's get this party started 
-            Console.WriteLine("Yo, gimme a number to convert");
-            string theQuery = Console.ReadLine();
-            double newNum = double.Parse(theQuery);
-            int[] keepTrack = new int[(int)(newNum)];
-
-            for (int i= 0; newNum >= 1; i++)
+            for (int j= 0; j < theseNums.Length; j++)
             {
-                if ((newNum % 2) == 0 && i == counter)
+                double thatNum = double.Parse(theseNums[j]);
+                int[] remHolder = new int[10];
+                int counter = 0;
+                for (int i = 0; thatNum != 0; i++)
                 {
-                    newNum = newNum / 2.0;
-                    runningMod = (int)(newNum % 2);
-                    counter++;
-                    keepTrack[i] = runningMod;
-                    
-                }
+                    if (thatNum % 2 == 0)
+                    {
+                        remHolder[i] = 0;
+                        thatNum = thatNum / 2;
+                        counter++;
+                    }
 
-                if ((newNum % 2) == 1 && i == counter)
-                {
-                    runningMod = (int)(newNum % 2);
-                    keepTrack[i] = runningMod;
-                    newNum = (newNum - 1) / 2.0;
-                    
-                    counter++;
-                    
-                    
+                    else if (thatNum % 2 == 1)
+                    {
+                        remHolder[i] = 1;
+                        thatNum = (thatNum - 1) / 2;
+                        counter++;
+                    }
                 }
+                int[] boxLength = new int[counter];
+                for (int i = 1; i < counter; i++)
+                {
+                    boxLength[i - 1] = remHolder[counter - i];
+                }
+                string green = string.Join("", boxLength);
+                Console.WriteLine(green);
             }
 
-            int[] checkThat = new int[counter];
-            for (int j=0; j<counter; j++)
-            {
-                checkThat[j] = keepTrack[counter - (j + 1)];
-            }
-
-            string green = string.Join("", checkThat);
-            Console.WriteLine(green);
+            
+            
         }
     }
 }
