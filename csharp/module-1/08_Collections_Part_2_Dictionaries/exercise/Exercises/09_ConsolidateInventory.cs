@@ -17,26 +17,22 @@ namespace Exercises
         public Dictionary<string, int> ConsolidateInventory(Dictionary<string, int> mainWarehouse,
                                                             Dictionary<string, int> remoteWarehouse)
         {
-            Dictionary<string, int> finalDictionary = new Dictionary<string, int>();
-            IEnumerable<string> firstKeys = mainWarehouse.Keys;
-            IEnumerable<string> secondKeys = remoteWarehouse.Keys;
+           
 
-            foreach (string oneKey in firstKeys)
+
+            foreach (var oneKey in remoteWarehouse.Keys)
             {
-                foreach (string twoKey in secondKeys)
+                if (mainWarehouse.ContainsKey(oneKey))
                 {
-                    if (oneKey == twoKey)
-                    {
-                        finalDictionary[oneKey] = mainWarehouse[oneKey] + remoteWarehouse[twoKey];
-                    }
-
-                    finalDictionary[twoKey] = remoteWarehouse[twoKey];
-
+                    mainWarehouse[oneKey] = mainWarehouse[oneKey] + remoteWarehouse[oneKey];
                 }
-                finalDictionary[oneKey] = mainWarehouse[oneKey];
+                else
+                {
+                    mainWarehouse.Add(oneKey, remoteWarehouse[oneKey]);
+                }
 
             }
-            return finalDictionary;
+            return mainWarehouse;
         }
     }
 }
