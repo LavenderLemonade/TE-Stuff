@@ -18,7 +18,64 @@ namespace Exercises
          */
         public Dictionary<string, int> WordCount(string[] words)
         {
-            return null;
+            Dictionary<string, int> theseWords = new Dictionary<string, int>();
+            int counter = 1;
+
+            if (words != null || words.Length != 0)
+            {
+
+                for (int i = 0; i < words.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        for (int u = i + 1; u < words.Length; u++)
+                        {
+                            if (words[u] == words[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        string theKey = words[i];
+                        theseWords[theKey] = counter;
+                        counter = 1;
+                    }
+                    if (i > 0 && i < words.Length - 1)
+                    {
+                        for (int k = 0; k < i; k++)
+                        {
+                            if (words[k] == words[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        for (int j = i + 1; j < words.Length; j++)
+                        {
+                            if (words[j] == words[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        string theKey = words[i];
+                        theseWords[theKey] = counter;
+                        counter = 1;
+                    }
+                    if (i == words.Length - 1)
+                    {
+                        for (int w = 0; w < words.Length-1; w++)
+                        {
+                            if (words[w] == words[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        string theKey = words[i];
+                        theseWords[theKey] = counter;
+                        counter = 1;
+                    }  
+                }
+                return theseWords;
+            }
+            return theseWords;
         }
     }
 }

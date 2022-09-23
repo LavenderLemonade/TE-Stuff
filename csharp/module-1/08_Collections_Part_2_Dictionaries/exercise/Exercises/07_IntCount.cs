@@ -17,7 +17,64 @@ namespace Exercises
          */
         public Dictionary<int, int> IntCount(int[] ints)
         {
-            return null;
+            Dictionary<int, int> theseWords = new Dictionary<int, int>();
+            int counter = 1;
+
+            if (ints != null || ints.Length != 0)
+            {
+
+                for (int i = 0; i < ints.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        for (int u = i + 1; u < ints.Length; u++)
+                        {
+                            if (ints[u] == ints[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        int theKey = ints[i];
+                        theseWords[theKey] = counter;
+                        counter = 1;
+                    }
+                    if (i > 0 && i < ints.Length - 1)
+                    {
+                        for (int k = 0; k < i; k++)
+                        {
+                            if (ints[k] == ints[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        for (int j = i + 1; j < ints.Length; j++)
+                        {
+                            if (ints[j] == ints[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        int theKey = ints[i];
+                        theseWords[theKey] = counter;
+                        counter = 1;
+                    }
+                    if (i == ints.Length - 1)
+                    {
+                        for (int w = 0; w < ints.Length - 1; w++)
+                        {
+                            if (ints[w] == ints[i])
+                            {
+                                counter++;
+                            }
+                        }
+                        int theKey = ints[i];
+                        theseWords[theKey] = counter;
+                        counter = 1;
+                    }
+                }
+                return theseWords;
+            }
+            return theseWords;
         }
     }
 }
