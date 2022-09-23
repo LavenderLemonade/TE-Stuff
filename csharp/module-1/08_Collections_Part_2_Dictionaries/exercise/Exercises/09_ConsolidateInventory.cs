@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercises
 {
@@ -20,22 +21,58 @@ namespace Exercises
             Dictionary<string, int> finalDictionary = new Dictionary<string, int>();
             IEnumerable<string> firstKeys = mainWarehouse.Keys;
             IEnumerable<string> secondKeys = remoteWarehouse.Keys;
+            string[] keyRing = new string[firstKeys.Count() + secondKeys.Count()];
 
-            foreach (string oneKey in firstKeys)
+            for (int i = 0; i < firstKeys.Count(); i++)
             {
-                foreach (string twoKey in secondKeys)
-                {
-                    if (oneKey == twoKey)
-                    {
-                        finalDictionary[oneKey] = mainWarehouse[oneKey] + remoteWarehouse[twoKey];
-                    }
-
-                    finalDictionary[twoKey] = remoteWarehouse[twoKey];
-
-                }
-                finalDictionary[oneKey] = mainWarehouse[oneKey];
-
+                keyRing[i] = firstKeys.ElementAt(i);
             }
+
+            for (int i = firstKeys.Count(); i < firstKeys.Count() + secondKeys.Count(); i++)
+            {
+                keyRing[i] = secondKeys.ElementAt(i);
+            }
+
+            for (int i = 0; i < keyRing.Length; i++)
+            {
+                if (i == 0)
+                {
+                    for (int j = 1; j < keyRing.Length; j++)
+                    {
+                        if (keyRing[j] == keyRing[i])
+                        {
+                            finalDictionary[keyRing[j]] = mainWarehouse[keyRing[j]] + remoteWarehouse[keyRing[j]];
+                        }
+                        else
+                        {
+                            finalDictionary[keyRing[j]] = mainWarehouse[keyRing[j]];
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+            //foreach (string oneKey in firstKeys)
+            //{
+            //    foreach (string twoKey in secondKeys)
+            //    {
+            //        if (oneKey == twoKey)
+            //        {
+            //            finalDictionary[twoKey] = (mainWarehouse[oneKey] + remoteWarehouse[twoKey]);
+            //        }
+            //        else
+            //        {
+            //            finalDictionary[twoKey] = (remoteWarehouse[twoKey]);
+            //        }
+
+            //    }
+
+            //    finalDictionary[oneKey] = (mainWarehouse[oneKey]);
+
+            //}
             return finalDictionary;
         }
     }
