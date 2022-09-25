@@ -25,7 +25,7 @@
         {
             if (DoorIsOpen == false)
             {
-                if (desiredFloor < NumberOfLevels && CurrentLevel < NumberOfLevels && desiredFloor > CurrentLevel)
+                if (desiredFloor <= NumberOfLevels &&  desiredFloor > CurrentLevel)
                 {
                     CurrentLevel = desiredFloor;
                 }
