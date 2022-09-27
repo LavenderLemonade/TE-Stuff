@@ -27,7 +27,7 @@ namespace InheritanceLecture
             // Buy out 
             Console.WriteLine("Starting a Buyout auction");
             Console.WriteLine("-----------------");
-            BuyoutAuction buyoutAuction = new BuyoutAuction(1000);
+            Auction buyoutAuction = new BuyoutAuction(1000);
             buyoutAuction.PlaceBid(new Bid("David", 5));
             buyoutAuction.PlaceBid(new Bid("Taylor", 1000));
             Console.WriteLine(buyoutAuction.CurrentHighBid.Bidder);
