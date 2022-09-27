@@ -10,7 +10,7 @@ namespace Lecture
             //
             // OLD MACDONALD
             //
-            FarmAnimal[] animals = new FarmAnimal[] { new Cow(), new Chicken() };
+            ISingable[] animals = new ISingable[] { new Cow(), new Chicken(), new Tractor() };
 
             foreach (FarmAnimal animal in animals)
             {
@@ -21,6 +21,10 @@ namespace Lecture
                 Console.WriteLine("Here a " + animal.Sound + " there a " + animal.Sound + " everywhere a " + animal.Sound + " " + animal.Sound);
                 Console.WriteLine();
             }
+
+            Tractor JohnDeere = new Tractor();
+            Console.WriteLine(JohnDeere.Name);
+            Console.WriteLine(JohnDeere.Sound);
 
         }
     }
