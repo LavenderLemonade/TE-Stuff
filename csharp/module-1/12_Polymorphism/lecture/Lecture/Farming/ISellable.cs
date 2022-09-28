@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Lecture.Farming
 {
-    public interface ISingable
+    public interface ISellable
     {
+        decimal Price { get; }
         string Name { get; }
-        string Sound { get; }
     }
 }

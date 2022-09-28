@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Lecture.Farming
 {
-    public interface ISingable
+    interface IDriveable
     {
-        string Name { get; }
-        string Sound { get; }
+        void Drive();
     }
 }
