@@ -16,6 +16,8 @@ namespace BankTellerExercise
 
         private List<IAccountable> accountsList { get; set; }
 
+
+
         public decimal Balance
         {
             get
@@ -28,7 +30,7 @@ namespace BankTellerExercise
         {
             get
             {
-                if (Balance >= 25000)
+                if (this.Balance >= 25000)
                 {
                     return true;
                 }
@@ -43,12 +45,7 @@ namespace BankTellerExercise
 
         public IAccountable[] GetAccounts()
         {
-            IAccountable[] arrayOfAccounts = new IAccountable[accountsList.Count];
-
-            foreach(IAccountable thing in accountsList)
-            {
-                arrayOfAccounts[i] = thing;
-            }
+           return accountsList.ToArray();
         }
 
 
