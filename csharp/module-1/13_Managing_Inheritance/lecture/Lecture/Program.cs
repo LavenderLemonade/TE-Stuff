@@ -11,9 +11,17 @@ namespace Lecture
             // OLD MACDONALD
             //
 
+            Cat Garfield = new Cat();
+            Garfield.Sleep(true);
+            Garfield.Eat();
+            Console.WriteLine(Garfield.Eat());
+
+            ShaggyCow Doofus = new ShaggyCow();
+            Console.WriteLine(Doofus.Sound);
+
             ISingable[] singables = new ISingable[]
             {
-                new Cow(), new Chicken(), new Pig(), new Tractor()
+                new Cow(), new Chicken(), new Pig(), new Tractor(), Garfield
             };
 
             foreach(ISingable singable in singables)
@@ -36,6 +44,9 @@ namespace Lecture
                 Console.WriteLine("Step right up and get your " + sellable.Name);
                 Console.WriteLine("Only $" + sellable.Price);
             }
+
+            
+            
         }
     }
 }
