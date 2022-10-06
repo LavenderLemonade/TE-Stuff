@@ -7,6 +7,13 @@ namespace Lecture
     {
         static void Main(string[] args)
         {
+            //WritingTextFiles.WritingAFile();
+            //ReadingAndWritingFiles.OpenAndWrite();
+
+            //BinaryImageManipulator.ReadFileIn();
+
+            PerformanceDemo.SlowPerformance();
+            PerformanceDemo.FastPerformance();
 
             Console.Write("Press enter to finish");
             Console.ReadLine();
