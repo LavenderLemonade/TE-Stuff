@@ -2,3 +2,4 @@
 -- Expected answer is around 100,000
 -- (1 row)
 
+SELECT MIN(population) FROM city WHERE state_abbreviation = 'OR';

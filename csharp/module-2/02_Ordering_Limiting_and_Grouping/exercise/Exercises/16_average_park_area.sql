@@ -2,3 +2,4 @@
 -- Expected answer is around 3,900.
 -- (1 row)
 
+SELECT AVG(area) FROM park WHERE has_camping = '1'
