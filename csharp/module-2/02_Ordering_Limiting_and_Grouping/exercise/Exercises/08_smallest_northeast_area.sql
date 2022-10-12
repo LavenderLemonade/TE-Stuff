@@ -4,4 +4,4 @@
 
 --SELECT * FROM state
 
-SELECT MIN(area) AS smallest_northeast_region FROM state WHERE census_region = 'Northeast';
+SELECT MIN(area) AS smallest_northeast_area FROM state WHERE census_region = 'Northeast';
