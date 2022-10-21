@@ -24,6 +24,27 @@ namespace USCitiesAndParks.DAO
             throw new NotImplementedException();
         }
 
+        public IList<Park> GetParksByState(string stateAbbreviation)
+        {
+            IList<Park> parks = new List<Park>();
+
+            using (SqlConnection parkConnection = new SqlConnection(connectionString))
+            {
+                parkConnection.Open();
+                SqlCommand parkCommand = new SqlCommand("SELECT * FROM park JOIN park_state ON park_state.park_id = park.park_id WHERE state_abbreviation = @state_abbreviation", parkConnection);
+                parkCommand.Parameters.AddWithValue("@state_abbreviation", stateAbbreviation);
+
+                SqlDataReader reader = parkCommand.ExecuteReader(); //runs the SELECT query that we wrote up there and returns the resulting rows
+
+                while (reader.Read())
+                {
+                    Park park = CreateParkFromReader(reader);
+                    parks.Add(park);
+                }
+            }
+            return parks;
+        }
+
         public Park CreatePark(Park park)
         {
             throw new NotImplementedException();
@@ -51,7 +72,11 @@ namespace USCitiesAndParks.DAO
 
         private Park CreateParkFromReader(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            Park park = new Park();
+            park.ParkId = Convert.ToInt32(reader["park_id"]);
+            park.ParkName = Convert.ToString(reader["park_name"]);
+            park.DateEstablished = Convert.ToDateTime(reader["date_established"]);
+
         }
     }
 }
