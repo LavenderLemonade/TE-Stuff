@@ -2,3 +2,9 @@
 -- Include all Georges, even those that have not appeared in any movies. Display the names in alphabetical order. 
 -- (59 rows)
 
+SELECT person_name ,COUNT(title) AS num_of_movies FROM movie
+JOIN movie_actor ON movie.movie_id = movie_actor.movie_id
+JOIN person ON person.person_id = movie_actor.actor_id
+WHERE person_name LIKE '%George%' 
+GROUP BY person_name
+ORDER BY person_name 

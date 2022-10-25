@@ -58,17 +58,35 @@ namespace HotelReservationsClient.Services
 
         public Reservation AddReservation(Reservation newReservation)
         {
-            throw new NotImplementedException();
+            //build request and send to the localhost
+            // endpoint won't change 
+            RestRequest request = new RestRequest("reservations");
+            request.AddJsonBody(newReservation); //attach data to request
+            IRestResponse<Reservation> response = client.Post<Reservation>(request); //send the request
+            //check for success
+            CheckForError(response, $"Add reservation for {newReservation.HotelId}");
+            //we know that when we POST to the endpoint, we get a reservation object back with a reservation ID
+            return response.Data;
+
         }
 
         public Reservation UpdateReservation(Reservation reservationToUpdate)
         {
-            throw new NotImplementedException();
+            //remember that we have to update the whole object when we update, not part of it
+            //it'll take what we update and leave the rest blank otherwise
+            RestRequest request = new RestRequest($"reservations/{reservationToUpdate.Id}");
+            request.AddJsonBody(reservationToUpdate); //add the object being updated
+            IRestResponse<Reservation> response = client.Put<Reservation>(request); //PUT will overwrite the whole object on the server
+            CheckForError(response, $"Update reservation for {reservationToUpdate.Id}");
+            return response.Data;
         }
 
         public bool DeleteReservation(int reservationId)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest($"reservations/{reservationId}");
+            IRestResponse response = client.Delete(request); //no data type to deserialize into because delete doesn't return data
+            CheckForError(response, $"Delete reservation {reservationId}");
+            return true;
         }
 
         /// <summary>

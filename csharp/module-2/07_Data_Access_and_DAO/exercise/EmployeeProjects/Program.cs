@@ -23,6 +23,7 @@ namespace EmployeeProjects
 
             EmployeeProjectsCLI application = new EmployeeProjectsCLI(employeeDao, projectDao, departmentDao);
             application.Run();
+
         }
     }
 }

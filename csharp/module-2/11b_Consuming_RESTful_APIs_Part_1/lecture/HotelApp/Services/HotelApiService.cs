@@ -20,7 +20,19 @@ namespace HotelApp.Services
 
         public List<Hotel> GetHotels()
         {
-            throw new NotImplementedException();
+            //build a request
+            RestRequest request = new RestRequest("hotels");
+            //send the request to the API
+            IRestResponse<List<Hotel>> response = client.Get<List<Hotel>>(request);
+            //IRestResponse is a container for the data coming back from the API
+            //use the client (RestClient), to make a GET request for a specific type of data, and use the request object we made
+
+            if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException("Something went wrong connecting to the server.");
+            }
+
+            return response.Data;
         }
 
         public List<Review> GetReviews()
