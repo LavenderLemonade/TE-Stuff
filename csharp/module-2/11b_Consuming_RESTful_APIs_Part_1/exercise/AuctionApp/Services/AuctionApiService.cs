@@ -1,6 +1,7 @@
 ﻿using RestSharp;
 using System.Collections.Generic;
 using AuctionApp.Models;
+using System.Net.Http;
 
 namespace AuctionApp.Services
 {
@@ -15,22 +16,62 @@ namespace AuctionApp.Services
 
         public List<Auction> GetAllAuctions()
         {
-            throw new System.NotImplementedException();
+            RestRequest request = new RestRequest("auctions");
+            IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new HttpRequestException("Error occurred - unable to reach server.", response.ErrorException);
+            }
+            else if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException("Error occurred - received non-success response: " + (int)response.StatusCode);
+            }
+            return response.Data;
         }
 
         public Auction GetDetailsForAuction(int auctionId)
         {
-            throw new System.NotImplementedException();
+            RestRequest requestOne = new RestRequest($"auctions/{auctionId}");
+            IRestResponse<Auction> response = client.Get<Auction>(requestOne);
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new HttpRequestException("Error occurred - unable to reach server.", response.ErrorException);
+            }
+            else if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException("Error occurred - received non-success response: " + (int)response.StatusCode);
+            }
+            return response.Data;
         }
 
         public List<Auction> GetAuctionsSearchTitle(string searchTerm)
         {
-            throw new System.NotImplementedException();
+            RestRequest request = new RestRequest($"auctions?title_like={searchTerm}");
+            IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new HttpRequestException("Error occurred - unable to reach server.", response.ErrorException);
+            }
+            else if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException("Error occurred - received non-success response: " + (int)response.StatusCode);
+            }
+            return response.Data;
         }
 
         public List<Auction> GetAuctionsSearchPrice(double searchPrice)
         {
-            throw new System.NotImplementedException();
+            RestRequest request = new RestRequest($"auctions?currentBid_lte={searchPrice}");
+            IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new HttpRequestException("Error occurred - unable to reach server.", response.ErrorException);
+            }
+            else if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException("Error occurred - received non-success response: " + (int)response.StatusCode);
+            }
+            return response.Data;
         }
     }
 }
