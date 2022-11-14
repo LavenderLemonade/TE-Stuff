@@ -4,6 +4,8 @@ body {
 }
 
 header {
+  display: flex;
+  flex-grow: 1;
   background-color: #F0F0F0;
   padding: 20px;
 }
@@ -13,9 +15,22 @@ header {
 }
 
 ul {
+  display: flex;
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+header > nav
+{
+  display: flex;
+  width: 100%;
+  justify-content: start;
+}
+
+.spacer
+{
+  justify-self: end;
 }
 
 li {
