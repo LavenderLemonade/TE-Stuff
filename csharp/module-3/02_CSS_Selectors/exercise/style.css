@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: rgba(192, 192, 192, 0.1);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+aside
+{
+  position: fixed;
+  border-right: 1px solid rgba(0, 173, 238, 0.4);
+  height: 100%;
+  width: 200px;
+}
+
+aside > img
+{
+ width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+main
+{
+  padding-left: 220px;
+  padding-right: 20px;
+}
+
+li
+{
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 173, 238, 0.4);
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+a
+{
+  font-weight: bold;
+  color: #00ADEE;
+  text-decoration: none;
+}
+
+li:first-child
+{
+  text-decoration: underline;
+}
+
+header > img
+{
+  height: 100px;
+  margin-left: 1%;
+  margin-bottom: 1%;
+}
+
+#placeholder
+{
+  max-width: 100vw;
+}
+
+#placeholder .banner
+{
+  width: 100%;
+}
+
+section
+{
+  display: inline-block;
+}
+
+section > div
+{
+  width: 33%;
+  display: inline-block;
+  margin-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+#what-we-do,#our-work
+{
+  border-right: 1px solid rgba(170, 239, 135, 0.8);
+}
+
+section > div > h2
+{
+  color:#8CC36F;
+}
+
+i
+{
+  margin-bottom: 1%;
+}
