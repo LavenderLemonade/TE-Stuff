@@ -82,9 +82,17 @@ function lastDigit(x,y)
 
 function seeColor(x)
 {
-	if (x.startsWith('red') = true || x.startsWith('blue')
+	if (x.startsWith('red'))
 	{
-		
+		return "red";
+	}
+
+	if (x.startsWith('blue'))
+	{
+		return "blue";
+	}
+	else{
+		return "";
 	}
 }
 
@@ -96,6 +104,11 @@ function seeColor(x)
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
 
+function oddOnly(x)
+{
+	return x.filter(n => n%2);
+}
+
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
     at the end of the string, such as with "edited".
@@ -104,6 +117,16 @@ function seeColor(x)
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+function frontAgain(x)
+{
+	if (x.substring(0,2) == x.substring((x.length - 2),(x.length)))
+	{
+		return true;
+	}
+	return false;
+
+}
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -116,6 +139,21 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+
+function cigarParty(x,y)
+{
+	if ( x > 39 && x < 61 && y == false)
+	{
+		return true;
+	}
+
+	if ( x > 39 && y == true)
+	{
+		return true;
+	}
+
+	return false;
+}
 
 /*
 8. **fizzBuzz** Given a number, return a value according to the following rules:
@@ -131,6 +169,26 @@ In all other cases return the original number.
 	fizzBuzz(8) → 8
 */
 
+function fizzBuzz(x)
+{
+	if (x % 3 ==0 && x % 5 == 0)
+	{
+		return "FizzBuzz";
+	}
+
+	if (x % 5 == 0)
+	{
+		return "Buzz"
+	}
+
+	if (x % 3 == 0)
+	{
+		return "Fizz"
+	}
+
+	return x;
+}
+
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
 
@@ -140,6 +198,20 @@ In all other cases return the original number.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
+function filterEvens(x)
+{
+	y = [];
+
+	for (i = 0; i < x.length; i++)
+	{
+		if (x[i] % 2 == 0)
+		{
+			y.push(x[i]);
+		}
+	}
+	return y;
+}
+
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
 
@@ -148,6 +220,20 @@ In all other cases return the original number.
 	filterBigNumbers([]) → []
 */
 
+function filterBigNumbers(x)
+{
+	y = [];
+
+	for (i = 0; i < x.length; i++)
+	{
+		if (x[i] >= 100)
+		{
+			y.push(x[i]);
+		}
+	}
+	return y;
+}
+
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
 parameter, `x` passed in.
@@ -155,6 +241,20 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+
+function filterMultiplesOfX(x,z)
+{
+	y = [];
+
+	for (i = 0; i < x.length; i++)
+	{
+		if (x[i] % z == 0)
+		{
+			y.push(x[i]);
+		}
+	}
+	return y;
+}
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -167,4 +267,6 @@ firstName, lastName, and age. Populate the properties with your values.
 		lastName,
 		age
 	}
+
+
 */
