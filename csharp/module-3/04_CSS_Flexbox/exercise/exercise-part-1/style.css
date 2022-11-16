@@ -7,6 +7,10 @@ header {
   text-align: center;;
 }
 
+.bio{
+  display: flex;
+}
+
 ul {
   margin: 0;
   padding: 0;
