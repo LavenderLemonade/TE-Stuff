@@ -10,8 +10,18 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const daysPerWeek = 7;
+  console.log(`There are ${daysPerWeek} days in the week.`);
   // Declares a variable those value can be changed
+  let daysPerMonth = 30;
+  console.log(`There are ${daysPerMonth} days in a month.`);
+
   // Declares a variable that will always be an array
+  const daysOfTheWeek = [
+    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+  ];
+  console.log(daysOfTheWeek);
+
 }
 
 /**
@@ -54,6 +64,8 @@ function falsy(x) {
   }
 }
 
+falsy(1);
+
 /**
  *  Objects are simple key-value pairs
     - values can be primitive data types
@@ -73,13 +85,19 @@ function objects() {
     ]
   };
 
+  console.log(person);
+  
+  
+
   // Log the object
 
   // Log the first and last name
 
   // Log each employee
+  person.employees.forEach((thing)  => {console.log(thing)});
 }
 
+objects();
 /*
 ########################
 Function Overloading

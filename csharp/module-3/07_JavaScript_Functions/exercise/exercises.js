@@ -20,6 +20,26 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted(gpa, satScore, recommendation)
+{
+    if (gpa > 4.0 || satScore > 1300)
+    {
+        return true;
+    }
+
+    if (gpa > 3.0 && recommendation == true)
+    {
+        return true;
+    }
+
+    if (satScore > 1200 && recommendation)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 /**
  * Write a function called useParameterToFilterArray that accepts a filter function
  * as a parameter. Use this function to filter unfilteredArray and return the result.
@@ -28,6 +48,11 @@
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(x)
+{
+    return unfilteredArray.filter(x);
+}
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -42,6 +67,11 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
+function makeNumber(x,y)
+{
+    return parseInt(x+y);
+}
+
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -50,11 +80,26 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+function addAll()
+{
+    let box = 0;
+    for (i = 0; i < arguments.length; i++)
+    {
+        box += arguments[i]
+    }
+    return box;
+}
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+function makeHappy(x)
+{
+    return x.map(x => `Happy ${x}`);
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -76,6 +121,11 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *
  * Use `map` and an anonymous function.
  */
+
+function getFullAddressesOfProperties(x)
+{
+    return x.map((xItem) => `${xItem.streetNumber} ${xItem.streetName} ${xItem.streetType} ${xItem.city} ${xItem.state} ${xItem.zip}`);
+}
 
 /** 
  * Write and document a function called findLargest that uses `forEach`
