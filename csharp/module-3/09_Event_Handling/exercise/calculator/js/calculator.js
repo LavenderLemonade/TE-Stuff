@@ -83,43 +83,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // loop over each of the numbers
   // add a click event listener to each number to call the function clickNumber
 
-  nums = document.getElementsByClassName('.number');
-
-  for (i=0;i<nums.length;i++)
-  {
-    nums[i].addEventListener('click', event => clickNumber)
-  }
-
+  nums = document.querySelectorAll('.number');
+  nums.forEach((item) =>{
+    item.addEventListener('click', clickNumber)
+  });
+  
   // get a reference to the decimal point button
   // add a click event listener to call the function clickNumber
   // the decimal point is part of the number so you can call clickNumber for it 
   // as you would for a number
 
-  deci = document.getElementsByClassName('.decimal')[0];
-  deci.addEventListener('click',event => clickNumber);
+  deci = document.querySelector('.decimal');
+  deci.addEventListener('click',clickNumber);
 
   // get a reference to the all clear button
   // add a click event listener to call the function clear  
 
-  theClear = document.getElementsByClassName('.all-clear');
-  theClear.addEventListener('click', event => clear);
+  theClear = document.getElementsByClassName('all-clear')[0];
+  theClear.addEventListener('click', clear);
 
   // get a reference to all of the operators;
   // loop over each of the operators
   // add a click event listener to each operator to call the function clickOperator
 
-  opps = document.getElementsByClassName('.operator');
+  opps = document.getElementsByClassName('operator');
 
   for (i=0; i<opps.length;i++)
   {
-    opps[i].addEventListener('click', event => clickOperator)
+    opps[i].addEventListener('click', clickOperator)
   }
 
   // add click event listener for the equal sign
   // should call the function performOperation
 
   equals = document.getElementsByClassName('equal-sign')[0];
-  equals.addEventListener('click', event => performOperation);
+  equals.addEventListener('click', performOperation);
 
 });
 
