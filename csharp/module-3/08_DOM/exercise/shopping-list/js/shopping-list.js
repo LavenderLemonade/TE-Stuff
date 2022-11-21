@@ -19,16 +19,15 @@ function setPageTitle()
  */
 function displayGroceries() 
 {
-  unList = document.getElementById('groceries');
+  newList = document.getElementById('groceries');
 
   for (i = 0; i < groceries.length; i++)
   {
     newEntry = document.createElement('li');
     newEntry.innerText = groceries[i];
-    unList.append(newEntry);
+    newList.appendChild(newEntry);
   }
 
-  document.appendChild(newList);
 
 }
 
