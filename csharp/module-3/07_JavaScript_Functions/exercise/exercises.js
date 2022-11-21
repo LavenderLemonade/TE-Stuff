@@ -143,6 +143,8 @@ function getFullAddressesOfProperties(x)
  **/
 
 
+
+
 /*
  * CHALLENGE
  * Write and document a function called getSumOfSubArrayValues.
