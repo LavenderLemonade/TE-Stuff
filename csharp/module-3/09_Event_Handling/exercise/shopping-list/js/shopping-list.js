@@ -36,3 +36,53 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  setPageTitle();
+  displayGroceries();
+
+  completeButtons = document.querySelectorAll("li");
+  completeButtons.forEach((item) => {
+    item.addEventListener('click', event => {
+      item.setAttribute('class','completed');
+      item.lastChild.setAttribute('class','completed');
+    })
+  });
+
+  completeButtons.forEach((item) => {
+    item.addEventListener('dblclick', event => {
+      if (item.className == 'completed')
+      {
+        item.removeAttribute('class');
+        item.lastChild.removeAttribute('class');
+      }
+    })
+  });
+
+  markAll =  document.getElementById('toggleAll');
+  
+  markAll.addEventListener('click', event => {
+    completeButtons.forEach((item => {
+      item.setAttribute('class','completed');
+      item.lastChild.setAttribute('class','completed');
+    }))
+    markAll.innerText = "Mark All Incomplete"
+  });
+
+  markAll.addEventListener('dblclick', event => {
+    completeButtons.forEach((item => {
+      item.setAttribute('class','incomplete');
+      item.lastChild.setAttribute('class','incomplete');
+    }))
+    markAll.innerText = "Mark All Complete"
+  });
+  
+
+  
+
+
+
+});
+
+
+
