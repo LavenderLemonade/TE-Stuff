@@ -19,16 +19,26 @@ function setPageTitle()
  */
 function displayGroceries() 
 {
+<<<<<<< HEAD
   unList = document.getElementById('groceries');
+=======
+  newList = document.getElementById('groceries');
+>>>>>>> 6a3fd3b4dad03e3cadb7a9a40ff4e66b527e145e
 
   for (i = 0; i < groceries.length; i++)
   {
     newEntry = document.createElement('li');
     newEntry.innerText = groceries[i];
+<<<<<<< HEAD
     unList.append(newEntry);
   }
 
   document.appendChild(newList);
+=======
+    newList.appendChild(newEntry);
+  }
+
+>>>>>>> 6a3fd3b4dad03e3cadb7a9a40ff4e66b527e145e
 
 }
 
