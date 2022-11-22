@@ -76,12 +76,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }))
     markAll.innerText = "Mark All Complete"
   });
-  
-
-  
-
-
-
 });
 
 
