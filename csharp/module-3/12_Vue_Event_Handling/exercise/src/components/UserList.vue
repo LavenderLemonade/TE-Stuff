@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-on:click = "checkAllChecked" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,7 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input v-on:click = "checkIfChecked(user.id)" type="checkbox" v-bind:key = "user.id" class = "checkboxer" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -52,36 +52,36 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button v-on:click = "flipStatus(user.id)" class="btnEnableDisable">{{checkOn(user.status)}}</button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+      <button v-bind:disabled = "(actionButtonDisabled ? false:true)" v-on:click = "enableSelectedUsers"  >Enable Users</button>
+      <button v-bind:disabled = "(actionButtonDisabled ? false:true)"  v-on:click = "disableSelectedUsers">Disable Users</button>
+      <button v-bind:disabled = "(actionButtonDisabled ? false:true)" v-on:click = "deleteSelectedUsers">Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click = "showForm = !showForm">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form  v-on:submit.prevent = "saveUser" id="frmAddNewUser"  v-show="showForm">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input v-model="newUser.firstName" type="text" name="firstName" />
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input v-model="newUser.lastName" type="text" name="lastName" />
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input v-model="newUser.username" type="text" name="username" />
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input v-model="newUser.emailAddress" type="text" name="emailAddress" />
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -93,6 +93,8 @@ export default {
   name: "user-list",
   data() {
     return {
+      selectedUserIDs: [],
+      showForm: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -162,11 +164,154 @@ export default {
     };
   },
   methods: {
+    checkAllChecked()
+    {
+      let allChecks = document.getElementById("selectAll");
+
+      if (allChecks.checked == true)
+      {
+        let seeCheck = document.getElementsByClassName("checkboxer");
+
+        for (let i = 0; i < seeCheck.length; i++)
+        {
+          seeCheck[i].checked = true;
+          this.checkIfChecked(i+1);
+        }
+
+
+      }
+
+      if (allChecks.checked != true)
+      {
+        let seeCheck = document.getElementsByClassName("checkboxer");
+
+        for (let i = 0; i < seeCheck.length; i++)
+        {
+          seeCheck[i].checked = false;
+          this.checkIfChecked(i+1);
+        }
+      }
+    },
+    checkIfChecked(id)
+    {
+      let seeCheck = document.getElementsByClassName("checkboxer");
+
+      if (seeCheck[id-1].checked == true)
+      {
+        this.addID(id);
+      }
+
+      if (seeCheck[id-1].checked == false)
+      {
+        for (let i = 0; i < this.selectedUserIDs.length; i++)
+        {
+          if (this.selectedUserIDs[i] == id)
+          {
+            this.removeID(id);
+          }
+        }
+      }
+
+    },
+    deleteSelectedUsers()
+    {
+      for (let i = 0; i < this.selectedUserIDs.length; i++)
+      {
+        for (let j = 0; j < this.users.length; j++)
+        {
+          if(this.selectedUserIDs[i] == this.users[j].id)
+          {
+            this.users.splice(j,1);
+          }
+        }
+      }
+
+      let checker = document.getElementsByClassName("checkboxer");
+
+      for (let z = 0; z < checker.length; z++)
+      {
+        checker[z].checked = false;
+      }
+      this.selectedUserIDs = [];
+    },
+    disableSelectedUsers()
+    {
+      for (let i = 0; i < this.selectedUserIDs.length; i++)
+      {
+        for (let j = 0; j < this.users.length; j++)
+        {
+          if(this.selectedUserIDs[i] == this.users[j].id)
+          {
+            this.users[j].status = "Disabled"
+          }
+        }
+      }
+
+      let checker = document.getElementsByClassName("checkboxer");
+
+      for (let z = 0; z < checker.length; z++)
+      {
+        checker[z].checked = false;
+      }
+    },
+    enableSelectedUsers()
+    {
+      for (let i = 0; i < this.selectedUserIDs.length; i++)
+      {
+        for (let j = 0; j < this.users.length; j++)
+        {
+          if(this.selectedUserIDs[i] == this.users[j].id)
+          {
+            this.users[j].status = "Active"
+          }
+        }
+      }
+
+      let checker = document.getElementsByClassName("checkboxer");
+
+      for (let z = 0; z < checker.length; z++)
+      {
+        checker[z].checked = false;
+      }
+    },
+    removeID(id) {
+      this.selectedUserIDs.splice(this.selectedUserIDs.indexOf(id),1);
+    },
+    addID(id) {
+      this.selectedUserIDs.push(id);
+    },
     getNextUserId() {
-      return this.nextUserId++;
+      return this.newUser.id = this.nextUserId;
+    },
+    saveUser(){
+      this.getNextUserId();
+      return this.users.push(this.newUser);
+    },
+    checkOn(x)
+    {
+      if (x == 'Active')
+      {
+        return  'Disable';
+      }
+
+      return 'Enable';
+    },
+    flipStatus(id)
+    {
+      let aUser;
+      this.users.forEach((user) => {
+        if (user.id === id) {
+          aUser = user
+        }
+      })
+      aUser.status = (aUser.status === "Active" ? "Disabled":"Active")
     }
   },
   computed: {
+    actionButtonDisabled()
+    {
+      return (this.selectedUserIDs.length > 0 ? true:false)
+    },
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
