@@ -35,6 +35,8 @@ export default {
         messageText: this.messageText
       };
       // call update in message service
+      messageService.update(message);
+      this.$router.push(`/${message.topicId}`);
     }
   },
   created() {
