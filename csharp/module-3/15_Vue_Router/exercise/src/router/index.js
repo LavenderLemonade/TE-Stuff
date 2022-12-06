@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import Home from '@/views/Home';
+import Home from '../views/Home';
 import VueRouter from 'vue-router';
-import MyBooks from '@/views/MyBooks';
-import NewBook from '@/views/NewBook';
-import BookDetail from '@/views/BookDetail';
+import MyBooks from '../views/MyBooks';
+import NewBook from '../views/NewBook';
+import BookDetail from '../views/BookDetail';
 
 Vue.use(VueRouter);
 
