@@ -77,17 +77,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // set the variable called display declared at the top of this file equal to the display element
   // HINT: use its id #display to get a reference to it
 
-<<<<<<< HEAD
-  display = document.querySelector('display');
-  // get a reference to all of the numbers
-  // loop over each of the numbers
-  // add a click event listener to each number to call the function clickNumber
-  nums = document.querySelectorAll('.number');
-  for (i=0;i<nums.length;i++)
-  {
-    nums[i].addEventListener('click', event => clickNumber)
-  }
-=======
   display = document.getElementById('display');
 
   // get a reference to all of the numbers
@@ -99,27 +88,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     item.addEventListener('click', clickNumber)
   });
   
->>>>>>> 6a3fd3b4dad03e3cadb7a9a40ff4e66b527e145e
   // get a reference to the decimal point button
   // add a click event listener to call the function clickNumber
   // the decimal point is part of the number so you can call clickNumber for it
   // as you would for a number
-<<<<<<< HEAD
-  deci = document.getElementsByClassName('.decimal')[0];
-  deci.addEventListener('click',event => clickNumber);
-  // get a reference to the all clear button
-  // add a click event listener to call the function clear 
-  theClear = document.getElementsByClassName('.all-clear');
-  theClear.addEventListener('click', event => clear);
-  // get a reference to all of the operators;
-  // loop over each of the operators
-  // add a click event listener to each operator to call the function clickOperator
-  opps = document.getElementsByClassName('.operator');
-  for (i=0; i<opps.length;i++)
-  {
-    opps[i].addEventListener('click', event => clickOperator)
-  }
-=======
 
   deci = document.querySelector('.decimal');
   deci.addEventListener('click',clickNumber);
@@ -141,7 +113,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     opps[i].addEventListener('click', clickOperator)
   }
 
->>>>>>> 6a3fd3b4dad03e3cadb7a9a40ff4e66b527e145e
   // add click event listener for the equal sign
   // should call the function performOperation
   equals = document.getElementsByClassName('equal-sign')[0];
